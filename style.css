@@ -1,0 +1,30 @@
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+#show-result{
+    height: 250px;
+    width: 1020px;
+    background: grey;
+}
+
+#touchs{
+    display: flex;
+    flex-direction: row;
+}
+
+#numbers{
+    height: 500px;
+    width: 500px;
+    border: solid 5px black; 
+}
+
+#operators{
+    display: flex;
+    flex-direction: column;
+    justify-content: e;
+    height: 500px;
+    width: 500px;
+    border: solid 5px blue; 
+}
