@@ -3,7 +3,7 @@ body{
     flex-direction: column;
 }
 
-#show-result{
+#display{
     height: 250px;
     width: 1020px;
     background: grey;
