@@ -1,9 +1,10 @@
-const numbers  = `7894561230c`;
+const numbers  = `7894561230.c`;
 const operators = '+-*/=';
 
 const divDisplay = document.querySelector("#display");
 const divTouchs = document.querySelector("#touchs");
 const divOperators = document.querySelector("#operators");
+console.log(divOperators)
 const divNumbers = document.querySelector("#numbers");
 
 function add(numberOne, numberTwo){
@@ -23,8 +24,8 @@ function divide(numberOne, numberTwo){
 }
 
 function operate(operator, numberOne, numberTwo){
-    parseInt(numberOne);
-    parseInt(numberTwo);
+    numberOne = Number(numberOne);
+    numberTwo = Number(numberTwo);
 
     switch(operator){
         case('+'):
@@ -35,6 +36,8 @@ function operate(operator, numberOne, numberTwo){
             return multiply(numberOne,numberTwo);
         case('/'):
             return divide(numberOne,numberTwo);
+        default:
+            return null;
     }    
 }
 
@@ -54,19 +57,27 @@ function displayedUserPresses(){
                 operatorPressed=''
             }
             else if(numbers.includes(buttonText)){
+                if(buttonText === '.')
+                {
+                    button.disabled = true;
+                }
                 numberPressed += buttonText;
                 divDisplay.textContent = numberPressed
             }
             else if(operators.includes(buttonText) && buttonText !== '='){
                 operatorPressed += buttonText;
-                divDisplay.textContent = operatorPressed
                 numberOne = numberPressed;
                 numberPressed='';
             }
             else if(buttonText === '='){
                 numberTwo = numberPressed
                 const result = operate(operatorPressed,numberOne, numberTwo);
-                divDisplay.textContent+= `${result}`;
+                if(!Number.isInteger(result)){
+                    divDisplay.textContent = `${result.toFixed(3)}`;
+                }
+                else{
+                    divDisplay.textContent = `${result}`;
+                }
                 numberPressed = result.toString();
                 operatorPressed = '';
             }
@@ -75,41 +86,4 @@ function displayedUserPresses(){
 
 }
 
-
-
-function createGraphic(){
-    for(let i = 0; i < operators.length; i++){
-        const buttonOperator = document.createElement("button");
-        buttonOperator.textContent = operators.slice(i,i+1);
-        buttonOperator.setAttribute('style','grow: 1; height: 50px; width: 50px;')
-        divOperators.appendChild(buttonOperator);
-    }
-
-    for(let i = 0; i < 4; i++){
-        const lineNumber = document.createElement("div");
-        lineNumber.classList.add("line-number");
-        lineNumber.setAttribute('style','display: flex;')
-        divNumbers.appendChild(lineNumber);
-        for(let j = 0; j < 3; j++){
-            const buttonNumber = document.createElement("button");
-            buttonNumber.textContent = numbers.slice(3*i + j,3*i + j + 1);
-            buttonNumber.setAttribute('style','grow: 1; height: 50px; width: 50px;')
-            lineNumber.appendChild(buttonNumber);
-        }
-        
-    }
-
-
-
-displayedUserPresses();
-/*--------------------------------*/
-/*--------------------------------*/
-/*--------------------------------*/
-/*---7---8---9---*/ /*+*/
-/*---4---5---6---*/ /*-*/
-/*---1---2---3---*/ /*'*'*/
-/*---0-----------*/ /*'/'*/
-/*----------------/ /*=*/
-}
-
-createGraphic();
+displayedUserPresses()

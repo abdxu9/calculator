@@ -8,10 +8,45 @@
     <title>Calculator</title>
 </head>
 <body>
-    <div id="display"></div>
-    <div id="touchs">
-        <div id="numbers"></div>
-        <div id="operators"></div>
+    <div id="container">
+        <div id="display"></div>
+        <div id="touchs">
+            <div id="left-button">
+                <div id="clear">
+                    <button type="button" id = "clear-button" value="c">c</button>
+                </div> 
+                <div class="numbers">
+                    <div class="line-number">
+                        <button type="button" value="7">7</button>
+                        <button type="button" value="8">8</button>
+                        <button type="button" value="9">9</button>
+                    </div>
+
+                    <div class="line-number">
+                        <button type="button" value="4">4</button>
+                        <button type="button" value="5">5</button>
+                        <button type="button" value="6">6</button>
+                    </div>
+                    
+                    <div class="line-number">
+                        <button type="button" value="1">1</button>
+                        <button type="button" value="2">2</button>
+                        <button type="button" value="3">3</button>
+                    </div>
+                    <div class="line-number">
+                        <button type="button" id="zero" value="0">0</button>
+                        <button type="button" value=".">.</button>
+                    </div>
+                </div>
+            </div>
+            <div class="operators">
+                <button type="button" value="/">/</button>
+                <button type="button" value="*">*</button>
+                <button type="button" value="-">-</button>
+                <button type="button" value="+">+</button>
+                <button type="button" value="=">=</button>
+            </div>
+        </div>
     </div>
     
 </body>
